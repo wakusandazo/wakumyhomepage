@@ -101,7 +101,7 @@
             
             わくさん<br>
             
-            <span class="subtitle">変な人</span>
+            <span class="subtitle" id="subtitle"></span>
         
         </h1>
     
@@ -138,6 +138,57 @@
         </article>
 
     </main>
+
+    <div id="update" style="display:none;">
+        アップデートがあります！
+    </div>
+
+    <script>
+        const texts = [
+            "変な人",
+            "おかしな人",
+            "夢見がち",
+            "ここの文章はページ更新で変わるらしい",
+            "",
+            "今で何回このサイトに来てくれたかな？",
+            "ここにある情報が全てではない",
+            "ゆっくりしていってね",
+            "絡みたい",
+            "ページ更新してくれてありがとう",
+            "きっと絡みたくてこのサイトに来たんでしょ？",
+            "適当に書いてるだけ",
+            "動いてないのに太るよ～",
+            "明日には消えているかも",
+            "消えちゃうかも",
+            "あなたが救いの手？",
+            "えへへ～",
+            "サヨリだけ",
+            "面白いと思ったゲームの翻訳は大体面倒で諦める",
+            "またの名を、変態",
+            "またの名を、ちんちん侍",
+            "きっとキミも同じ人",
+            "ここのサイトは基本AIに教えてもらいながら作ってる"
+        ];
+
+        const firstMessage = "変な人";
+
+        if (!localStorage.getItem("visited")) {
+            document.getElementById("subtitle").textContent = firstMessage;
+            localStorage.setItem("visited", "true");
+        } else {
+            const random = Math.floor(Math.random() * texts.length);
+            document.getElementById("subtitle").textContent = texts[random];
+        }
+
+        const currentVersion = "1.0.1"; // ←ここを更新ごとに変える
+
+        const savedVersion = localStorage.getItem("siteVersion");
+
+        if (savedVersion !== currentVersion) {
+            document.getElementById("update").style.display = "block";
+            localStorage.setItem("siteVersion", currentVersion);
+        }
+    </script>
 
 </body>
 
