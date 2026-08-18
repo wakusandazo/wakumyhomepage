@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html lang="ja">
 
 <head>
@@ -21,8 +23,10 @@
     <style>
 
         /*
-            VRChatページ専用
-            秘密ページへの入口
+        ==============================
+        VRChatページ専用
+        秘密ページへの入口
+        ==============================
         */
 
         #secret-trigger {
@@ -92,6 +96,12 @@
         }
 
 
+        /*
+        ==============================
+        秘密の入口 出現アニメーション
+        ==============================
+        */
+
         @keyframes secretFade {
 
             from {
@@ -99,6 +109,7 @@
 
                 transform: translateY(10px);
             }
+
 
             to {
                 opacity: 1;
@@ -116,15 +127,25 @@
 <body>
 
 
-    <!-- 共通ヘッダー -->
+    <!-- ==============================
+         共通ヘッダー
+    ============================== -->
+
     <div id="common-header"></div>
 
 
-    <!-- アップデート通知 -->
+    <!-- ==============================
+         アップデート通知
+    ============================== -->
+
     <div id="update" style="display:none;">
         アップデートがあります！
     </div>
 
+
+    <!-- ==============================
+         メイン
+    ============================== -->
 
     <main>
 
@@ -135,6 +156,12 @@
 
             <div class="box">
 
+
+                <!--
+                    この「VRChat」を
+                    2秒以内に5回クリックすると
+                    秘密ページへの入口が出現
+                -->
 
                 <h2 id="secret-trigger">
                     VRChat
@@ -186,13 +213,14 @@
             </div>
 
 
-            <!--
-                最初は非表示。
+            <!-- ==============================
+                 秘密ページへの入口
 
-                VRChatのタイトルを5回クリックすると
-                この部分が表示される。
-            -->
+                 最初は非表示
+            ============================== -->
+
             <div id="secret-entry" class="secret-entry">
+
 
                 <p>
                     ……見つけちゃった？
@@ -202,6 +230,7 @@
                 <a href="/wakumyhomepage/secret.html">
                     ENTER
                 </a>
+
 
             </div>
 
@@ -221,21 +250,25 @@
 
         const currentVersion = "1.0.1";
 
-        const savedVersion = localStorage.getItem("siteVersion");
+        const savedVersion =
+            localStorage.getItem("siteVersion");
 
 
         if (savedVersion !== currentVersion) {
 
             document.getElementById("update").style.display = "block";
 
-            localStorage.setItem("siteVersion", currentVersion);
+            localStorage.setItem(
+                "siteVersion",
+                currentVersion
+            );
 
         }
 
 
         /*
         ==============================
-        秘密ページ
+        秘密ページの入口
         ==============================
         */
 
@@ -254,35 +287,29 @@
 
         secretTrigger.addEventListener("click", () => {
 
+
+            /*
+                クリック回数を1増やす
+            */
+
             secretClicks++;
 
 
             /*
-                クリック間隔が空いた場合に備えて
-                タイマーをリセット
+                前回のリセットタイマーを解除
             */
 
             clearTimeout(secretTimer);
 
 
             /*
-                5回クリックしたら解放
+                5回クリックしたら
+                秘密の入口を表示
             */
 
             if (secretClicks >= 5) {
 
                 secretEntry.classList.add("show");
-
-
-                /*
-                    一度見つけたことを保存
-                */
-
-                localStorage.setItem(
-                    "vrchatSecretUnlocked",
-                    "true"
-                );
-
 
                 secretClicks = 0;
 
@@ -302,27 +329,17 @@
 
             }, 2000);
 
+
         });
 
-
-        /*
-            一度秘密ページを見つけたブラウザでは
-            次回から入口を表示
-        */
-
-        if (
-            localStorage.getItem("vrchatSecretUnlocked")
-            === "true"
-        ) {
-
-            secretEntry.classList.add("show");
-
-        }
 
     </script>
 
 
-    <!-- 共通ヘッダー読み込み -->
+    <!-- ==============================
+         共通ヘッダー読み込み
+    ============================== -->
+
     <script src="/wakumyhomepage/header.js"></script>
 
 
