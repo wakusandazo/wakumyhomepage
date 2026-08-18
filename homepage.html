@@ -1,17 +1,19 @@
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="description" content="ノリノリの卑弥呼、ヒウィゴ">
+
     <title>わくまいぺーじ</title>
 
-    <style>
+    <!-- 共通ヘッダー用CSS -->
+    <link rel="stylesheet" href="/wakumyhomepage/common.css">
+    <link rel="stylesheet" href="/wakumyhomepage/header.css">
 
-        nav {
-            text-align: left;
-            background: #333;
-            padding: 10px;
-        }
+    <style>
 
         header {
             height: 100px;
@@ -30,6 +32,7 @@
             animation: fadeUp 1.2s ease forwards;
             animation-delay: 0.2s;
             font-family: "Poppins", sans-serif;
+            margin: 0;
         }
 
         @keyframes fadeIn {
@@ -40,7 +43,7 @@
         }
 
         @keyframes fadeUp {
-            to{
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -56,7 +59,7 @@
             background-color: #ffffff1a;
             border-radius: 10px;
             padding: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             margin-bottom: 20px;
         }
@@ -65,21 +68,11 @@
             text-align: left;
         }
 
-        nav a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
+        a:link {
+            color: #add8e6;
         }
 
-        nav a:hover {
-            color: #aaa;
-        }
-
-        nav a:link {
-            color: white;
-        }
-
-        a:link{
+        a:visited {
             color: #add8e6;
         }
 
@@ -89,23 +82,20 @@
 
 <body>
 
-    <nav>
-        <a href="#">ホーム</a>
-        <a href="#">ブログ</a>
-        <a href="#">VRChat</a>
-        <a href="https://wakusandazo.github.io/wakumyhomepage/link_page.html">リンク集</a>
-    </nav>
+    <!-- 共通ヘッダー -->
+    <div id="common-header"></div>
 
+    <!-- このページ固有のタイトル部分 -->
     <header>
 
         <h1 class="fade-up">
-            
+
             わくさん<br>
-            
+
             <span class="subtitle" id="subtitle"></span>
-        
+
         </h1>
-    
+
     </header>
 
     <main>
@@ -114,8 +104,10 @@
 
             <div class="box">
 
-                <p>色々まったりやってる人間です。</p>
-            
+                <p>
+                    色々まったりやってる人間です。
+                </p>
+
             </div>
 
             <div class="box center">
@@ -125,9 +117,11 @@
                     ・osu!taiko<br>
                     ・VRChat<br>
                     <br>
+
                     過去にやってたこと<br>
                     ・DDLC(日本語翻訳mod) ←気が向いた時にやってます<br>
                     <br>
+
                     特にやることないので自分のホームページ作ってみました。<br>
                     21の男性というのをやってます。<br>
                     マイペースで更新していきます。特にブログ。<br>
@@ -135,7 +129,7 @@
                 </p>
 
             </div>
-        
+
         </article>
 
     </main>
@@ -144,7 +138,9 @@
         アップデートがあります！
     </div>
 
+    <!-- ページ固有のJavaScript -->
     <script>
+
         const texts = [
             "変な人",
             "おかしな人",
@@ -174,22 +170,38 @@
         const firstMessage = "変な人";
 
         if (!localStorage.getItem("visited")) {
+
             document.getElementById("subtitle").textContent = firstMessage;
+
             localStorage.setItem("visited", "true");
+
         } else {
-            const random = Math.floor(Math.random() * texts.length);
+
+            const random = Math.floor(
+                Math.random() * texts.length
+            );
+
             document.getElementById("subtitle").textContent = texts[random];
+
         }
 
-        const currentVersion = "1.0.1"; // ←ここを更新ごとに変える
+
+        const currentVersion = "1.0.1";
 
         const savedVersion = localStorage.getItem("siteVersion");
 
         if (savedVersion !== currentVersion) {
+
             document.getElementById("update").style.display = "block";
+
             localStorage.setItem("siteVersion", currentVersion);
+
         }
+
     </script>
+
+    <!-- 共通ヘッダー読み込み用JavaScript -->
+    <script src="/wakumyhomepage/header.js"></script>
 
 </body>
 

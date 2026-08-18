@@ -1,0 +1,27 @@
+.site-nav {
+    background: #333;
+
+    padding: 10px;
+
+    text-align: left;
+}
+
+
+.site-nav a {
+    color: white;
+
+    margin: 0 10px;
+
+    text-decoration: none;
+}
+
+
+.site-nav a:link,
+.site-nav a:visited {
+    color: white;
+}
+
+
+.site-nav a:hover {
+    color: #aaa;
+}

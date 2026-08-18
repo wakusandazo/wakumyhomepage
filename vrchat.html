@@ -1,105 +1,130 @@
 <html lang="ja">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="description" content="ノリノリの卑弥呼、ヒウィゴ">
-    <title>わくまいぺーじ</title>
+
+    <title>VRChat - わくまいぺーじ</title>
+
+
+    <!-- サイト全体の共通CSS -->
+    <link rel="stylesheet" href="/wakumyhomepage/common.css">
+
+    <!-- 共通ヘッダー用CSS -->
+    <link rel="stylesheet" href="/wakumyhomepage/header.css">
+
 
     <style>
 
-        nav {
-            text-align: left;
-            background: #333;
-            padding: 10px;
+        /*
+            VRChatページ専用
+            秘密ページへの入口
+        */
+
+        #secret-trigger {
+            cursor: default;
+            user-select: none;
         }
 
-        header {
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
+        .secret-entry {
+            display: none;
+
+            max-width: 500px;
+
+            margin: 30px auto;
+            padding: 20px;
+
             text-align: center;
-            font-family: "Poppins", sans-serif;
+
+            background-color: #ffffff0d;
+
+            border: 1px solid #ffffff30;
+            border-radius: 10px;
+
+            animation: secretFade 0.8s ease;
         }
 
-        body {
-            background-color: #00053a;
-            color: white;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1.2s ease forwards;
-            animation-delay: 0.2s;
-            font-family: "Poppins", sans-serif;
+
+        .secret-entry.show {
+            display: block;
         }
 
-        @keyframes fadeIn {
+
+        .secret-entry p {
+            margin-bottom: 15px;
+
+            opacity: 0.8;
+        }
+
+
+        .secret-entry a {
+            display: inline-block;
+
+            color: #ff9aaa;
+
+            text-decoration: none;
+
+            font-size: 18px;
+
+            padding: 10px 20px;
+
+            border: 1px solid #ff9aaa80;
+            border-radius: 10px;
+
+            transition: 0.25s;
+        }
+
+
+        .secret-entry a:visited {
+            color: #ff9aaa;
+        }
+
+
+        .secret-entry a:hover {
+            background-color: #ff9aaa20;
+
+            transform: translateY(-2px);
+        }
+
+
+        @keyframes secretFade {
+
+            from {
+                opacity: 0;
+
+                transform: translateY(10px);
+            }
+
             to {
                 opacity: 1;
+
                 transform: translateY(0);
             }
-        }
 
-        @keyframes fadeUp {
-            to{
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .subtitle {
-            font-size: 14px;
-            color: white;
-            margin-top: 15px;
-        }
-
-        .box {
-            background-color: #ffffff1a;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .left {
-            text-align: left;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            color: #aaa;
-        }
-
-        nav a:link {
-            color: white;
-        }
-
-        a:link{
-            color: #add8e6;
         }
 
     </style>
 
 </head>
 
+
 <body>
 
-    <nav>
-        <a href="#">ホーム</a>
-        <a href="#">ブログ</a>
-        <a href="#">VRChat</a>
-        <a href="https://wakusandazo.github.io/wakumyhomepage/link_page.html">リンク集</a>
-    </nav>
 
+    <!-- 共通ヘッダー -->
+    <div id="common-header"></div>
+
+
+    <!-- アップデート通知 -->
     <div id="update" style="display:none;">
         アップデートがあります！
     </div>
+
 
     <main>
 
@@ -107,44 +132,199 @@
 
             <br>
 
+
             <div class="box">
 
-                <p>
-                    <h2>VRChat</h2>
-                    <h5>自己紹介的なやつ</h5>
-                    <h5>bioに書けなかった分を書いてます（暇な時に読んでみてね）</h5>
-                </p>
-                
+
+                <h2 id="secret-trigger">
+                    VRChat
+                </h2>
+
+
+                <h5>
+                    自己紹介的なやつ
+                </h5>
+
+
+                <h5>
+                    bioに書けなかった分を書いてます（暇な時に読んでみてね）
+                </h5>
+
+
                 <br>
 
-                <p>in: (平日)23:00~07:00<br>
+
+                <p>
+
+                    in: (平日)23:00~07:00<br>
+
                     (土日祝)ランダムor平日通り<br>
+
                     <br>
+
                     基本寝るときにinしていることが多い<br>
+
                     人と寝るのが好き<br>
+
                     抱き枕にするされるどっちも好き<br>
+
                     <br>
+
                     一人ぼっちが少し苦手<br>
+
                     二人きりが好き<br>
+
                     <br>
+
                     激しく動くゲムワは酔いやすい<br>
+
                     腰が弱いので横になってることが多い<br>
-                    
+
                 </p>
-            
+
+
             </div>
-        
+
+
+            <!--
+                最初は非表示。
+
+                VRChatのタイトルを5回クリックすると
+                この部分が表示される。
+            -->
+            <div id="secret-entry" class="secret-entry">
+
+                <p>
+                    ……見つけちゃった？
+                </p>
+
+
+                <a href="/wakumyhomepage/secret/r18.html">
+                    ENTER
+                </a>
+
+            </div>
+
+
         </article>
 
     </main>
 
-    <div id="update" style="display:none;">
-        アップデートがあります！
-    </div>
 
     <script>
 
+        /*
+        ==============================
+        アップデート通知
+        ==============================
+        */
+
+        const currentVersion = "1.0.1";
+
+        const savedVersion = localStorage.getItem("siteVersion");
+
+
+        if (savedVersion !== currentVersion) {
+
+            document.getElementById("update").style.display = "block";
+
+            localStorage.setItem("siteVersion", currentVersion);
+
+        }
+
+
+        /*
+        ==============================
+        秘密ページ
+        ==============================
+        */
+
+        const secretTrigger =
+            document.getElementById("secret-trigger");
+
+
+        const secretEntry =
+            document.getElementById("secret-entry");
+
+
+        let secretClicks = 0;
+
+        let secretTimer;
+
+
+        secretTrigger.addEventListener("click", () => {
+
+            secretClicks++;
+
+
+            /*
+                クリック間隔が空いた場合に備えて
+                タイマーをリセット
+            */
+
+            clearTimeout(secretTimer);
+
+
+            /*
+                5回クリックしたら解放
+            */
+
+            if (secretClicks >= 5) {
+
+                secretEntry.classList.add("show");
+
+
+                /*
+                    一度見つけたことを保存
+                */
+
+                localStorage.setItem(
+                    "vrchatSecretUnlocked",
+                    "true"
+                );
+
+
+                secretClicks = 0;
+
+                return;
+
+            }
+
+
+            /*
+                2秒以内に次のクリックがなければ
+                カウントを0に戻す
+            */
+
+            secretTimer = setTimeout(() => {
+
+                secretClicks = 0;
+
+            }, 2000);
+
+        });
+
+
+        /*
+            一度秘密ページを見つけたブラウザでは
+            次回から入口を表示
+        */
+
+        if (
+            localStorage.getItem("vrchatSecretUnlocked")
+            === "true"
+        ) {
+
+            secretEntry.classList.add("show");
+
+        }
+
     </script>
+
+
+    <!-- 共通ヘッダー読み込み -->
+    <script src="/wakumyhomepage/header.js"></script>
+
 
 </body>
 
